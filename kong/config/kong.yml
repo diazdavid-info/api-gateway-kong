@@ -1,0 +1,16 @@
+---
+
+_format_version: "1.1"
+
+services:
+- name: service-testing
+  url: https://enfq1s711bpxf.x.pipedream.net/
+  routes:
+  - name: router-testing
+    hosts:
+      - localhost
+    paths:
+    - /testing
+    strip_path: true
+    methods:
+    - GET
