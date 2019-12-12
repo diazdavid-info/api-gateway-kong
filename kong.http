@@ -1,0 +1,102 @@
+GET localhost:8000
+
+###
+
+GET localhost:8001
+
+###
+
+GET localhost:8001/services/
+
+###
+
+GET localhost:8001/routes/
+
+###
+
+POST localhost:8001/services/
+Content-Type: application/json; charset=UTF-8
+
+{
+  "name": "testing-service",
+  "protocol": "https",
+  "host": "enfq1s711bpxf.x.pipedream.net",
+  "port": 443,
+  "path": "/testing/",
+  "url": "https://enfq1s711bpxf.x.pipedream.net/"
+}
+
+###
+
+POST localhost:8001/services/testing-service/routes
+Content-Type: application/json; charset=UTF-8
+
+{
+  "protocols": ["http", "https"],
+  "methods": ["GET"],
+  "paths": ["/test/", "/foo/"],
+  "hosts": ["localhost"]
+}
+
+###
+
+GET localhost:8000/foo/
+
+###
+
+GET localhost:8000/test/
+
+###
+
+POST localhost:8001/services/testing-service/routes
+Content-Type: application/json; charset=UTF-8
+
+{
+  "protocols": ["http"],
+  "methods": ["GET"],
+  "paths": ["/baz/"],
+  "headers": {"x-debug": ["true"]},
+  "strip_path": true,
+  "hosts": ["localhost"]
+}
+
+###
+
+GET localhost:8000/baz/
+x-debug: true
+
+###
+
+GET localhost:8001/routes/541be6e8-e19a-4479-9580-b88742fef20f
+Content-Type: application/json; charset=UTF-8
+
+###
+
+PATCH localhost:8001/routes/541be6e8-e19a-4479-9580-b88742fef20f
+Content-Type: application/json; charset=UTF-8
+
+{
+  "strip_path": false
+}
+
+###
+
+DELETE localhost:8001/services/246b2af2-6b8d-4b67-90f9-a40b16337646
+
+###
+
+DELETE localhost:8001/routes/8bba39d0-f374-4be3-89da-b7758bbd4c49
+
+###
+
+DELETE localhost:8001/routes/541be6e8-e19a-4479-9580-b88742fef20f
+
+###
+
+GET localhost:8000/testing/
+
+###
+
+GET localhost:8000/foo/
+
+###

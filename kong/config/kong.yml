@@ -10,7 +10,7 @@ services:
     hosts:
       - localhost
     paths:
-    - /testing
-    strip_path: true
+      - /testing
+    strip_path: false
     methods:
-    - GET
+      - GET

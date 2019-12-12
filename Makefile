@@ -11,3 +11,8 @@ all: parse import reload
 
 export_config:
 	docker-compose exec kong kong config db_export /etc/kong/kong.yml.exported
+
+phoenix:
+	docker-compose down
+	rm -rf resources/docker/*
+	docker-compose up -d
